@@ -81,6 +81,7 @@ Use o MySQL Workbench ou outro cliente para criar o schema `investcontrol`:
 
 ```sql
 CREATE DATABASE investcontrol;
+Execute os scripts dos arquivos que estão na pasta data base para teste
 ```
 
 
