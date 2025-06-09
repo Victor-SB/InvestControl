@@ -118,4 +118,4 @@ Acesse: [https://localhost:7283](https://localhost:7283)
 
 ## 👨‍💼 Autor
 
-**Victor Hugo**Desenvolvedor .NET Jr.
+**Victor Hugo** Desenvolvedor .NET Jr.
