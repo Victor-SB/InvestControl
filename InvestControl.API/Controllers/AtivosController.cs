@@ -9,6 +9,7 @@ namespace InvestControl.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Tags("Ativos")]
 public class AtivosController : ControllerBase
 {
     private readonly AppDbContext _context;
@@ -28,36 +29,40 @@ public class AtivosController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Ativo>> GetById(int id)
+    public async Task<ActionResult<AtivoDto>> GetById(int id)
     {
         var ativo = await _context.Ativos.FindAsync(id);
-        return ativo is null ? NotFound() : Ok(ativo);
+        if (ativo is null) return NotFound();
+
+        return Ok(_mapper.Map<AtivoDto>(ativo));
     }
 
     [HttpPost]
-    public async Task<ActionResult<Ativo>> Create(Ativo ativo)
+    public async Task<ActionResult<AtivoDto>> Create(AtivoDto dto)
     {
-        _context.Ativos.Add(ativo);
+        var novoAtivo = _mapper.Map<Ativo>(dto);
+        _context.Ativos.Add(novoAtivo);
         await _context.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetById), new { id = ativo.Id }, ativo);
+
+        var resultDto = _mapper.Map<AtivoDto>(novoAtivo);
+        return CreatedAtAction(nameof(GetById), new { id = novoAtivo.Id }, resultDto);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, Ativo ativo)
+    public async Task<IActionResult> Update(int id, AtivoDto dto)
     {
-        if (id != ativo.Id) return BadRequest();
-
         var existente = await _context.Ativos.FindAsync(id);
         if (existente is null) return NotFound();
 
-        existente.Codigo = ativo.Codigo;
-        existente.Nome = ativo.Nome;
+        // Atualiza os campos necessários
+        existente.Codigo = dto.Codigo;
+        existente.Nome = dto.Nome;
 
         await _context.SaveChangesAsync();
         return NoContent();
     }
 
-    [HttpDelete("id")]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
         var ativo = await _context.Ativos.FindAsync(id);
