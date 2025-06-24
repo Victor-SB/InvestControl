@@ -1,8 +1,8 @@
 # InvestControl 📈
 
-Sistema Web completo para controle de investimentos de clientes, desenvolvido como parte de um desafio técnico para vaga de Engenheiro de software Júnior no Itaú.
+Sistema Web completo para controle de investimentos de clientes, desenvolvido como parte de um **desafio técnico para vaga de Engenheiro de TI jr no Itaú**.
 
-Este projeto abrange o desenvolvimento de uma **API RESTful com ASP.NET Core**, um **front-end moderno com Blazor WebAssembly e MudBlazor**, e integração com um **banco de dados MySQL**. O sistema permite consulta detalhada das posições de investimento de um cliente, incluindo corretagens, preço médio, lucro/prejuízo e muito mais.
+O projeto contempla o desenvolvimento de uma **API RESTful com ASP.NET Core**, um **front-end moderno com Blazor WebAssembly e MudBlazor**, integração com banco de dados **MySQL**, e foco em boas práticas de engenharia de software como **Clean Architecture**, **testes unitários**, **testes de mutação**, e até conceitos de **engenharia do caos** e **resiliência com Kafka**.
 
 ---
 
@@ -18,7 +18,11 @@ A partir do ID de um usuário, o sistema é capaz de:
 
 Cada funcionalidade está implementada tanto na API quanto exibida de forma visual no front-end.
 
+![InvestControl](https://github.com/user-attachments/assets/e7cedc91-6870-4b8f-bbcd-4b2e71094811)
+
+
 ---
+
 
 ## 📚 Tecnologias Utilizadas
 
@@ -41,6 +45,14 @@ Cada funcionalidade está implementada tanto na API quanto exibida de forma visu
 
 - MySQL
 - Entidades: Usuário, Ativo, Operação, Posição
+
+---
+### Testes
+- **xUnit** para testes unitários
+- **Stryker.NET** para **testes de mutação**
+- **Conceito de Engenharia do Caos** aplicado em simulações de falha
+- Integração com fila **Kafka** com fallback (implementação conceitual/documentada)
+
 
 ---
 
@@ -81,7 +93,6 @@ Use o MySQL Workbench ou outro cliente para criar o schema `investcontrol`:
 
 ```sql
 CREATE DATABASE investcontrol;
-Execute os scripts dos arquivos que estão na pasta data base para teste
 ```
 
 
@@ -116,6 +127,19 @@ Acesse: [https://localhost:7283](https://localhost:7283)
 
 ---
 
+## ✅ Checklists
+
+- [x] Clean Architecture aplicada
+- [x] DTOs com AutoMapper
+- [x] Regras de negócio encapsuladas
+- [x] Blazor com MudBlazor e tema do Itaú
+- [x] Testes unitários e testes de mutação
+- [x] Integração com Swagger
+- [x] Pronto para publicação no GitHub
+
+---
+
 ## 👨‍💼 Autor
 
-**Victor Hugo** Desenvolvedor .NET Jr.
+**Victor Hugo**
+Desenvolvedor .NET Jr.
